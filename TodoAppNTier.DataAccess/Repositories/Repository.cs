@@ -31,22 +31,27 @@ namespace TodoAppNTier.DataAccess.Repositories
 
         public async Task<T> GetByFilter(Expression<Func<T, bool>> filter, bool asNoTracking = false)
         {
-            return await asNoTracking ? await _context.Set<T>().FirstOrDefaultAsync(filter) : await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter);
+            return asNoTracking ? await _context.Set<T>().FirstOrDefaultAsync(filter) : await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter);
         }
 
-        public Task<T> GetById(object id)
+        public async Task<T> GetById(object id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
+        }
+
+        public IQueryable<T> GetQuery()
+        {
+            return _context.Set<T>().AsQueryable();
         }
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Remove(entity);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
         }
     }
 }
