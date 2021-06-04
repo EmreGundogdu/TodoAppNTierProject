@@ -15,7 +15,7 @@ namespace TodoAppNTier.Bussiness.DependencyResolvers.Microsoft
         {
             services.AddDbContext<TodoContext>(opt =>
             {
-                opt.UseSqlServer(@"server=(localdb)\MSSQLLocalDBdatabse=TodoDb;integrated security=true;");
+                opt.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=TodoDb;integrated security=true;");
             });
         }
     }
