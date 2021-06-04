@@ -15,4 +15,8 @@
     <ProjectReference Include="..\TodoAppNTier.Bussiness\TodoAppNTier.Bussiness.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
