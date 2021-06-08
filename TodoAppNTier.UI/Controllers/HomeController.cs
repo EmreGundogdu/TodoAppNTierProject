@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoAppNTier.Bussiness.Interfaces;
+using TodoAppNTier.Dtos.WorkDtos;
 
 namespace TodoAppNTier.UI.Controllers
 {
@@ -20,6 +21,20 @@ namespace TodoAppNTier.UI.Controllers
         {
             var workList = await _workService.GetAll();
             return View(workList);
+        }
+        public IActionResult Create()
+        {
+            return View(new WorkCreateDto());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(WorkCreateDto dto)
+        {            
+            if (ModelState.IsValid)
+            {
+                await _workService.Create(dto);
+                RedirectToAction("Index");
+            }
+            return View(dto);
         }
     }
 }

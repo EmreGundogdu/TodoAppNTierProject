@@ -1,15 +1,31 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@model List<WorkListDto>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Todo App</title>
     <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <p class="text-danger"></p>
+    
     <div class="container my-2">
-        <table>
+        <div class="text-end my-5">
+            <a asp-action="Create" asp-controller="Home" class="btn btn-primary btn-sm">Yeni İş Ekle</a>
+        </div>
+        <table class="table table-hovered">
             <thead>
-
+                <tr>
+                    <th>İş</th>
+                    <th>Durumu</th>
+                </tr>
             </thead>
+            <tboyd>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Definition</td>
+                        <td>@(item.IsCompleted?" Tamamlandı":" Tamamlanmadı")</td>
+                    </tr>
+                }
+            </tboyd>
         </table>
     </div>
 </body>

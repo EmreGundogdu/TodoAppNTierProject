@@ -40,10 +40,7 @@ namespace TodoAppNTier.UI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{actiýn=Index}/{id?}"
-                    );
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
