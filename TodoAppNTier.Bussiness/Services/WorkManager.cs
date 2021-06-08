@@ -58,10 +58,9 @@ namespace TodoAppNTier.Bussiness.Services
             };
         }
 
-        public async Task Rempve(object id)
+        public async Task Remove(int id)
         {
-            var deletedWork = await _unitOfWork.GetRepository<Work>().GetById(id);
-            _unitOfWork.GetRepository<Work>().Remove(deletedWork);
+            _unitOfWork.GetRepository<Work>().Remove(id);
             await _unitOfWork.SaveChanges();
         }
 

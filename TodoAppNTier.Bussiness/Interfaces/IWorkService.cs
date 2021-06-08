@@ -12,7 +12,7 @@ namespace TodoAppNTier.Bussiness.Interfaces
         Task<List<WorkListDto>> GetAll();
         Task Create(WorkCreateDto workCreateDto);
         Task<WorkListDto> GetById(int id);
-        Task Rempve(object id);
+        Task Remove(int id);
         Task Update(WorkUpdateDto workUpdateDto);
 
     }

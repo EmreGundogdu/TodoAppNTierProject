@@ -32,7 +32,7 @@ namespace TodoAppNTier.UI.Controllers
             if (ModelState.IsValid)
             {
                 await _workService.Create(dto);
-                RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             return View(dto);
         }
@@ -56,6 +56,11 @@ namespace TodoAppNTier.UI.Controllers
                 return RedirectToAction("Index");
             }
             return View(dto);
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            await _workService.Remove(id);
+            return RedirectToAction("Index");
         }
     }
 }

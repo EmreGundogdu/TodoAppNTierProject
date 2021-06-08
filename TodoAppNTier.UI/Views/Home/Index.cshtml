@@ -15,7 +15,7 @@
                 <tr>
                     <th>İş</th>
                     <th>Durumu</th>
-                    <th>Äölem</th>
+                    <th>İşlem</th>
                 </tr>
             </thead>
             <tboyd>
@@ -25,7 +25,8 @@
                         <td>@item.Definition</td>
                         <td>@(item.IsCompleted?" Tamamlandı":" Tamamlanmadı")</td>
                         <td>
-                            <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-sm btn-warning"></a>
+                            <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Update</a>
+                            <a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Remove</a>
                         </td>
                     </tr>
                 }
