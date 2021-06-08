@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoAppNTier.DataAccess.Context;
 using TodoAppNTier.DataAccess.Interfaces;
+using TodoAppNTier.Entities.Concrete;
 
 namespace TodoAppNTier.DataAccess.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class, new()
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly TodoContext _context;
 
@@ -51,7 +52,8 @@ namespace TodoAppNTier.DataAccess.Repositories
 
         public void Update(T entity)
         {
-            _context.Set<T>().Update(entity);
+            var updatedEntity = _context.Set<T>().Find(entity.Id);
+            _context.Entry(updatedEntity).CurrentValues.SetValues(entity);
         }
     }
 }
