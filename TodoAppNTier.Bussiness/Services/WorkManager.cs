@@ -48,9 +48,9 @@ namespace TodoAppNTier.Bussiness.Services
             return workList;
         }
 
-        public async Task<WorkListDto> GetById(object id)
+        public async Task<WorkListDto> GetById(int id)
         {
-            var work = await _unitOfWork.GetRepository<Work>().GetById(id);
+            var work = await _unitOfWork.GetRepository<Work>().GetByFilter(x=>x.Id==id);
             return new()
             {
                 Definition = work.Definition,

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace TodoAppNTier.Bussiness.DependencyResolvers.Microsoft
             services.AddDbContext<TodoContext>(opt =>
             {
                 opt.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=TodoDb;integrated security=true;");
+                opt.LogTo(Console.WriteLine, LogLevel.Information);
             });
         }
     }
