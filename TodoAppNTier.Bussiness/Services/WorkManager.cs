@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,49 +14,31 @@ namespace TodoAppNTier.Bussiness.Services
     public class WorkManager : IWorkService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public WorkManager(IUnitOfWork unitOfWork)
+        public WorkManager(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task Create(WorkCreateDto workCreateDto)
         {
-            await _unitOfWork.GetRepository<Work>().Create(new()
-            {
-                IsCompleted = workCreateDto.IsCompleted,
-                Definition = workCreateDto.Definition
-            });
+            await _unitOfWork.GetRepository<Work>().Create(_mapper.Map<Work>(workCreateDto));
             await _unitOfWork.SaveChanges();
         }
 
         public async Task<List<WorkListDto>> GetAll()
         {
             var list = await _unitOfWork.GetRepository<Work>().GetAll();
-            var workList = new List<WorkListDto>();
-            if (list != null && list.Count > 0)
-            {
-                foreach (var work in list)
-                {
-                    workList.Add(new()
-                    {
-                        Definition = work.Definition,
-                        Id = work.Id,
-                        IsCompleted = work.IsCompleted
-                    });
-                }
-            }
-            return workList;
+
+            return _mapper.Map<List<WorkListDto>>(await _unitOfWork.GetRepository<Work>().GetAll());
         }
 
         public async Task<WorkListDto> GetById(int id)
         {
-            var work = await _unitOfWork.GetRepository<Work>().GetByFilter(x=>x.Id==id);
-            return new()
-            {
-                Definition = work.Definition,
-                IsCompleted = work.IsCompleted
-            };
+            return _mapper.Map<WorkListDto>(await _unitOfWork.GetRepository<Work>().GetByFilter(x => x.Id == id));
+
         }
 
         public async Task Remove(int id)
@@ -66,12 +49,7 @@ namespace TodoAppNTier.Bussiness.Services
 
         public async Task Update(WorkUpdateDto workUpdateDto)
         {
-            _unitOfWork.GetRepository<Work>().Update(new()
-            {
-                Definition = workUpdateDto.Definition,
-                Id = workUpdateDto.Id,
-                IsCompleted = workUpdateDto.IsCompleted
-            });
+            _unitOfWork.GetRepository<Work>().Update(_mapper.Map<Work>(workUpdateDto));
             await _unitOfWork.SaveChanges();
         }
     }

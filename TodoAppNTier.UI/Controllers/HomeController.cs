@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,9 @@ namespace TodoAppNTier.UI.Controllers
     public class HomeController : Controller
     {
         private readonly IWorkService _workService;
+        private readonly IMapper _mapper;
 
-        public HomeController(IWorkService workService)
+        public HomeController(IWorkService workService, IMapper mapper)
         {
             _workService = workService;
         }
