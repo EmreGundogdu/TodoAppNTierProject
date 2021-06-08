@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoAppNTier.Bussiness.Interfaces;
+using TodoAppNTier.Bussiness.Mappings.AutoMapper;
 using TodoAppNTier.Bussiness.Services;
 using TodoAppNTier.DataAccess.Context;
 using TodoAppNTier.DataAccess.UnitOfWork;
@@ -19,6 +21,12 @@ namespace TodoAppNTier.Bussiness.DependencyResolvers.Microsoft
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IWorkService, WorkManager>();
+            var configuration = new MapperConfiguration(opt =>
+            {
+                opt.AddProfile(new WorkProfile());
+            });
+            var mapper = configuration.CreateMapper();
+            services.AddSingleton(mapper);
             services.AddDbContext<TodoContext>(opt =>
             {
                 opt.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=TodoDb;integrated security=true;");
