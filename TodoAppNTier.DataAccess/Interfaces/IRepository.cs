@@ -14,8 +14,8 @@ namespace TodoAppNTier.DataAccess.Interfaces
         Task<T> GetById(object id);
         Task<T> GetByFilter(Expression<Func<T, bool>> filter, bool asNoTracking = false);
         Task Create(T entity);
-        void Update(T entity);
-        void Remove(Object id);
+        void Update(T entity,T unchanged);
+        void Remove(T entity);
         IQueryable<T> GetQuery();
     }
 }

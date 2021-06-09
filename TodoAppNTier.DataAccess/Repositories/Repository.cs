@@ -45,16 +45,14 @@ namespace TodoAppNTier.DataAccess.Repositories
             return _context.Set<T>().AsQueryable();
         }
 
-        public void Remove(object id)
+        public void Remove(T entity)
         {
-            var deletedEntity = _context.Set<T>().Find(id);
-            _context.Set<T>().Remove(deletedEntity);
+            _context.Set<T>().Remove(entity);
         }
 
-        public void Update(T entity)
+        public void Update(T entity,T unchanged)
         {
-            var updatedEntity = _context.Set<T>().Find(entity.Id);
-            _context.Entry(updatedEntity).CurrentValues.SetValues(entity);
+            _context.Entry(unchanged).CurrentValues.SetValues(entity);
         }
     }
 }

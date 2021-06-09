@@ -43,14 +43,20 @@ namespace TodoAppNTier.Bussiness.Services
 
         public async Task Remove(int id)
         {
-            _unitOfWork.GetRepository<Work>().Remove(id);
+            var removedEntity = await _unitOfWork.GetRepository<Work>().GetByFilter(x => x.Id == id, true);
+            _unitOfWork.GetRepository<Work>().Remove(removedEntity);
             await _unitOfWork.SaveChanges();
         }
 
         public async Task Update(WorkUpdateDto workUpdateDto)
         {
-            _unitOfWork.GetRepository<Work>().Update(_mapper.Map<Work>(workUpdateDto));
-            await _unitOfWork.SaveChanges();
+            var updatedEntity = await _unitOfWork.GetRepository<Work>().GetByFilter(x => x.Id == workUpdateDto.Id, true);
+            if (updatedEntity != null)
+            {
+                _unitOfWork.GetRepository<Work>().Update(_mapper.Map<Work>(workUpdateDto), updatedEntity);
+                await _unitOfWork.SaveChanges();
+            }
+            throw new Exception("İlgili nesne bulunamadı");
         }
     }
 }
