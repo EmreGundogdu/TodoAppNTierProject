@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace TodoAppNTier.Dtos.WorkDtos
 {
     public class WorkCreateDto
-    {
-        [Required(ErrorMessage ="Definition is required")]
+    {        
         public string Definition { get; set; }
         public bool IsCompleted { get; set; }
     }
