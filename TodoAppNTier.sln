@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppNTier.DataAccess", "TodoAppNTier.DataAccess\TodoAppNTier.DataAccess.csproj", "{69D00918-CB9A-42FB-A05E-8CAA62285BA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoAppNTier.DataAccess", "TodoAppNTier.DataAccess\TodoAppNTier.DataAccess.csproj", "{69D00918-CB9A-42FB-A05E-8CAA62285BA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppNTier.Bussiness", "TodoAppNTier.Bussiness\TodoAppNTier.Bussiness.csproj", "{BDD686C7-2258-4DE0-8B78-334C84753BA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoAppNTier.Business", "TodoAppNTier.Bussiness\TodoAppNTier.Business.csproj", "{BDD686C7-2258-4DE0-8B78-334C84753BA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppNTier.Entities", "TodoAppNTier.Entities\TodoAppNTier.Entities.csproj", "{F84BAB3F-0D04-4A63-A1A5-10AD1A3C0878}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoAppNTier.Entities", "TodoAppNTier.Entities\TodoAppNTier.Entities.csproj", "{F84BAB3F-0D04-4A63-A1A5-10AD1A3C0878}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppNTier.Dtos", "TodoAppNTier.Dtos\TodoAppNTier.Dtos.csproj", "{1742FA0A-0103-4E72-9314-FCE1B6AB240D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoAppNTier.Dtos", "TodoAppNTier.Dtos\TodoAppNTier.Dtos.csproj", "{1742FA0A-0103-4E72-9314-FCE1B6AB240D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppNTier.UI", "TodoAppNTier.UI\TodoAppNTier.UI.csproj", "{B177ECD1-20BD-4CAB-956F-5A63B80503A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoAppNTier.UI", "TodoAppNTier.UI\TodoAppNTier.UI.csproj", "{B177ECD1-20BD-4CAB-956F-5A63B80503A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
